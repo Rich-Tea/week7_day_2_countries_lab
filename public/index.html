@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/bundle.js"></script>
+</head>
+
+<div id="app">
+    <body>
+        
+        <h2>Total Population of All Countries</h2>
+        <!-- {{ totalPop }} -->
+        <h2>Select country:</h2>
+        <form v-on:submit.prevent="addToFaves">
+            <select name="country" id="country" v-model="selectedIndex">
+                <option v-for="(country, index) in countries" :value="index">{{ country.name }}</option>
+            </select>
+            <div v-if="selectedIndex">
+                <h3>Selected Country:</h3>
+                {{ countries[selectedIndex].name }} 
+                <img id="flag" :src="countries[selectedIndex].flag">
+            </div>
+            <input type="submit" value="Add To Favourites">
+        </form>
+  
+        <h2>Favourite Countries</h2>
+        <ul v-for="country in faveCountries">
+            <li>{{ country.name }}</li>
+        </ul>
+
+    </body>
+</div>
+
+</html>
